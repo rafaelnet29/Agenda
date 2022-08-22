@@ -168,7 +168,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTASobre);
 
         try {
-            jFTCel_Aux.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+            jFTCel_Aux.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
