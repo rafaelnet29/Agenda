@@ -6,7 +6,7 @@ public class agendaModel {
     private String end;
     private String email;
     private String cel;
-    private String tel;
+    private String cel_aux;
     private String cpf;
     private String sobre;
 
@@ -42,12 +42,12 @@ public class agendaModel {
         this.email = email;
     }
 
-    public String getTel() {
-        return tel;
+    public String getCel_Aux() {
+        return cel_aux;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setCel_Aux(String cel_aux) {
+        this.cel_aux = cel_aux;
     }
 
     public String getCel() {

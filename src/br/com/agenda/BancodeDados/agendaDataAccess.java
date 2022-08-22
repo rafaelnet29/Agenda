@@ -26,7 +26,7 @@ public class agendaDataAccess {
 
     //Método para inserir contatos via SQL
     public void inserir(agendaModel at) {
-        String query = "INSERT INTO usuario (nome,endereco,email,telefone,celular,cpf,sobre) VALUES(?,?,?,?,?,?,?)";
+        String query = "INSERT INTO usuario (nome,endereco,email,celular_aux,celular,cpf,sobre) VALUES(?,?,?,?,?,?,?)";
 
         try {
             ps = conn.getConectMySQl().prepareStatement(query);
@@ -34,7 +34,7 @@ public class agendaDataAccess {
             ps.setString(1, at.getNome());
             ps.setString(2, at.getEnd());
             ps.setString(3, at.getEmail());
-            ps.setString(4, at.getTel());
+            ps.setString(4, at.getCel_Aux());
             ps.setString(5, at.getCel());
             ps.setString(6, at.getCpf());
             ps.setString(7, at.getSobre());
@@ -53,14 +53,14 @@ public class agendaDataAccess {
 
     //Método para  atualizar contatos via SQL
     public void Atualizar(agendaModel at) {
-        String query = " UPDATE usuario SET nome = ?, endereco = ?, email = ?, telefone = ?, celular = ?, cpf = ?, sobre = ?"
+        String query = " UPDATE usuario SET nome = ?, endereco = ?, email = ?, celular_aux = ?, celular = ?, cpf = ?, sobre = ?"
                 + " WHERE id = ?";
         try {
             ps = conn.getConectMySQl().prepareStatement(query);
             ps.setString(1, at.getNome());
             ps.setString(2, at.getEnd());
             ps.setString(3, at.getEmail());
-            ps.setString(4, at.getTel());
+            ps.setString(4, at.getCel_Aux());
             ps.setString(5, at.getCel());
             ps.setString(6, at.getCpf());
             ps.setString(7, at.getSobre());
@@ -106,7 +106,7 @@ public class agendaDataAccess {
                     + "\n nome varchar(250) not null,"
                     + "\n endereco varchar(200) not null,"
                     + "\n email varchar(200)not null,"
-                    + "\n telefone varchar(30),"
+                    + "\n celular_aux varchar(30) not null,"
                     + "\n celular varchar(30) not null,"
                     + "\n cpf varchar(20)not null,"
                     + "\n sobre varchar(255),"
@@ -156,8 +156,8 @@ public class agendaDataAccess {
                 at.setEnd(rset.getString("endereco"));
                 //Recupera o email do banco e atribui ela ao objeto
                 at.setEmail(rset.getString("email"));
-                //Recupera o telefone residencial
-                at.setTel(rset.getString("telefone"));
+                //Recupera o telefone auxiliar
+                at.setCel_Aux(rset.getString("celular_aux"));
                 //Recupera o telefone celular
                 at.setCel(rset.getString("celular"));
                 //Recupera o cpf

@@ -34,7 +34,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         this.jFTCpf.setText("");
         this.jTFPesquisar.setText("");
         this.jTASobre.setText("");
-        this.jFTTelefone.setText("");
+        this.jFTCel_Aux.setText("");
     }
 
     /**
@@ -77,7 +77,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
             jTFNome.setText(a.getNome());
             jTFEndereco.setText(a.getEnd());
             jTFEmail.setText(a.getEmail());
-            jFTTelefone.setText(a.getTel());
+            jFTCel_Aux.setText(a.getCel_Aux());
             jFTCel.setText(a.getCel());
             jFTCpf.setText(a.getCpf());
             jTASobre.setText(a.getSobre());
@@ -119,7 +119,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         jTFEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTASobre = new javax.swing.JTextArea();
-        jFTTelefone = new javax.swing.JFormattedTextField();
+        jFTCel_Aux = new javax.swing.JFormattedTextField();
         jFTCpf = new javax.swing.JFormattedTextField();
         btnLimpar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
@@ -152,7 +152,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         jLabel3.setText("EMAIL:");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel4.setText("RESID:");
+        jLabel4.setText("CELULAR AUX:");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("CEL:");
@@ -168,7 +168,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTASobre);
 
         try {
-            jFTTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+            jFTCel_Aux.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -272,9 +272,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
                                         .addComponent(jTFPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(30, 30, 30)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jFTTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(40, 40, 40)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
@@ -298,7 +296,9 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel4)
-                                .addGap(139, 139, 139)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jFTCel_Aux, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jFTCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFTCel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -327,7 +327,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jFTTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFTCel_Aux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jFTCel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -417,7 +417,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, Short.MAX_VALUE)
         );
 
         pack();
@@ -427,7 +427,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         atributos.setNome(jTFNome.getText());
         atributos.setEnd(jTFEndereco.getText());
         atributos.setEmail(jTFEmail.getText());
-        atributos.setTel(jFTTelefone.getText());
+        atributos.setCel_Aux(jFTCel_Aux.getText());
         atributos.setCel(jFTCel.getText());
         atributos.setCpf(jFTCpf.getText());        
         atributos.setSobre(jTASobre.getText());
@@ -440,7 +440,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         atributos.setNome(jTFNome.getText());
         atributos.setEnd(jTFEndereco.getText());
         atributos.setEmail(jTFEmail.getText());
-        atributos.setTel(jFTTelefone.getText());
+        atributos.setCel_Aux(jFTCel_Aux.getText());
         atributos.setCel(jFTCel.getText());
         atributos.setCpf(jFTCpf.getText());        
         atributos.setSobre(jTASobre.getText());
@@ -515,8 +515,8 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JFormattedTextField jFTCel;
+    private javax.swing.JFormattedTextField jFTCel_Aux;
     private javax.swing.JFormattedTextField jFTCpf;
-    private javax.swing.JFormattedTextField jFTTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
