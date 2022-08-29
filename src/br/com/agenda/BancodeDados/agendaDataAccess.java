@@ -39,15 +39,20 @@ public class agendaDataAccess {
             ps.setString(6, at.getCpf());
             ps.setString(7, at.getSobre());
 
-           // if(ps.executeUpdate() != 0){
-                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
-                ps.executeUpdate();
-            //}
-            ps.close();
-            conn.getConectMySQl().close();
-            
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+            ps.executeUpdate();
+
         } catch (SQLException ex) {
             Logger.getLogger(agendaDataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (conn.getConectMySQl() != null && ps != null) {
+                try {
+                    conn.getConectMySQl().close();
+                    ps.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+            }
         }
     }
 
@@ -67,36 +72,48 @@ public class agendaDataAccess {
             ps.setInt(8, at.getId());
 
             ps.executeUpdate();
-            ps.close();
-            conn.getConectMySQl().close();
-            
+
             JOptionPane.showMessageDialog(null, "Contato Atualizado!!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Opá! Erro ao atualizar " + ex.getSQLState() + ex.getErrorCode());
+        } finally {
+            if (conn.getConectMySQl() != null && ps != null) {
+                try {
+                    conn.getConectMySQl().close();
+                    ps.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+            }
         }
     }
 
     //Método para deletar contatos via SQL
     public void Deletar(int id) {
         String sql = "DELETE FROM usuario WHERE id = ?";
+
         try {
             ps = conn.getConectMySQl().prepareStatement(sql);
-            try {
-                ps.setInt(1, id);
-                if (ps.executeUpdate() != 0) {
-                    JOptionPane.showMessageDialog(null, "Contato deletado com sucesso!");
-                    ps.close();
-                    conn.getConectMySQl().close();
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
+            ps.setInt(1, id);
+            if (ps.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Contato deletado com sucesso!");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
+        } finally {
+            if (conn.getConectMySQl() != null && ps != null) {
+                try {
+                    conn.getConectMySQl().close();
+                    ps.close();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
+            }
         }
+
     }
 
-    //Método para recriar a tablela contatos via SQL
+//Método para recriar a tablela contatos via SQL
     public void ApagarAgenda() {
         try {
             Statement stmt = this.conn.getConectMySQl().createStatement();

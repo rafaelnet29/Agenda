@@ -37,42 +37,9 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         this.jFTCel_Aux.setText("");
     }
 
-    /**
-    public void PesquisarID(int id) {
-        try {
-            if (Integer.parseInt(jTFPesquisar.getText()) == id) {
-                String sql = "SELECT * FROM usuario WHERE id = ?";
-                ps = conn.getConectMySQl().prepareStatement(sql);
-                id = Integer.parseInt(jTFPesquisar.getText());
-                ps.setInt(1, id);
-                ResultSet rs = this.ps.executeQuery();
-                while (rs.next()) {
-                    jTFNome.setText(rs.getString("nome"));
-                    jTFEndereco.setText(rs.getString("endereco"));
-                    jTFEmail.setText(rs.getString("email"));
-                    jFTResidencial.setText(rs.getString("residencial"));
-                    jFTCelular.setText(rs.getString("celular"));
-                    jFTCpf.setText(rs.getString("cpf"));
-                    jTASobre.setText(rs.getString("sobre"));
-                }
-            }
-            if (id == 0) {
-                JOptionPane.showMessageDialog(null, " Registro no banco não existe ou campo vazio! ");
-            }
-            if (this.conn.getConectMySQl() == null) {
-                JOptionPane.showMessageDialog(null, " Não existe conexão com o Banco de dados! 2");
-            }
-            this.ps.close();
-            this.conn.getConectMySQl().close();
-        } catch (NumberFormatException | SQLException ex) {
-            Logger.getLogger(Frames.TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, " Registro no banco não existe ou campo vazio!  " + ex.getMessage());
-        }
-     * @param p}*/
-
-    public void PesquisaNome(String p) {
-        p = jTFPesquisar.getText();
-        for (agendaModel a : bNegocio.getContatos(p)) {
+    public void PesquisaNome(String pesquisa) {
+        pesquisa = jTFPesquisar.getText();
+        for (agendaModel a : bNegocio.getContatos(pesquisa)) {
             jTFIdentificacao.setText(Integer.toString(a.getId()));
             jTFNome.setText(a.getNome());
             jTFEndereco.setText(a.getEnd());
@@ -97,9 +64,9 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
     }
 
     public void ImprimeRelatorioContatos() {
-        agendaListaContatos l = new agendaListaContatos();
-        l.Relatorios();
-        l.setVisible(true);
+        agendaListaContatos relatorio = new agendaListaContatos();
+        relatorio.Relatorios();
+        relatorio.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -489,7 +456,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
 
     private void jMISobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISobreActionPerformed
         JOptionPane.showMessageDialog(null, " O presente software é uma Agenda para contatos e utiliza o Banco de Dados MySql."
-                + "\n A aplicação foi desenvolvida com o software NetBeans IDE versão: 8.2 com Java e Swing"
+                + "\n A aplicação foi desenvolvida com o software NetBeans, com Java e Swing"
                 + "\n Desenvolvedor: Rafael de Souza Santana "
                 + "\n Curso / Faculdade: Sistema de Informaçao / Estácio - FAL "
                 + "\n Contatos: rafaelsouzanet29@outlook.com"
