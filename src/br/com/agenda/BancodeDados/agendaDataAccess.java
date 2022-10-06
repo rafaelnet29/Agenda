@@ -20,8 +20,8 @@ public class agendaDataAccess {
     //Método Construtor
     public agendaDataAccess() {
         this.ps = ps;
-        conn = new agendaConexao();
-        at = new agendaModel();
+        this.conn = new agendaConexao();
+        this.at = new agendaModel();
     }
 
     //Método para inserir contatos via SQL
