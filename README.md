@@ -4,7 +4,6 @@
 Este é um projeto de uma agenda de contatos para desktop muito simples criada no NetBeans
 
 ## O que foi usado:
- - Java 
- - Swing
+ - Java / Swing
  - SQL
  - MySQL
