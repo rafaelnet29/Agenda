@@ -36,7 +36,7 @@ public final class agendaListaContatos extends javax.swing.JFrame {
                             + "\n Celular: " + rs.getString("celular")
                             + "\n Cpf: " + rs.getString("cpf") 
                             + "\n Sobre: \n" + rs.getString("sobre").toUpperCase()
-                            + "\n___________________________________________________\n");
+                            + "\n________________________________________________________\n");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, " Problemas na comunicão com o Banco de dados ");
