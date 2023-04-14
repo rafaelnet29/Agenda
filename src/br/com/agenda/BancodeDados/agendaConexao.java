@@ -11,7 +11,6 @@ public class agendaConexao {
     static Connection conn;
     /**
      * Conexão como MySQL
-     * 
     */
     private final String url = "jdbc:mysql://localhost:3306/cad?useTimezone=true&serverTimezone=UTC";
     private final String user = "root";
