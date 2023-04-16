@@ -14,7 +14,7 @@ public class agendaConexao {
     */
     private final String url = "jdbc:mysql://localhost:3306/cad?useTimezone=true&serverTimezone=UTC";
     private final String user = "root";
-    private final String pass = "qwerty";
+    private final String pass = "asdf";
     private static final String Driverclass = "com.mysql.cj.jdbc.Driver";
     
     // Método construtor
