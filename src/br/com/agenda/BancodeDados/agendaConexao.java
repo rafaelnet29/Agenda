@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class agendaConexao {
 
-    static Connection conn;
+    private Connection conn;
     /**
      * Conexão como MySQL
     */
