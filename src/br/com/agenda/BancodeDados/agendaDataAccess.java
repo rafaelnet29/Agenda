@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
 public class agendaDataAccess {
 
     private final agendaConexao conn;
-    private PreparedStatement ps;
+    private PreparedStatement preparestate;
     private final agendaModel at;
 
     //Método Construtor
     public agendaDataAccess() {
-        this.ps = ps;
+        this.preparestate = preparestate;
         this.conn = new agendaConexao();
         this.at = new agendaModel();
     }
@@ -29,26 +29,26 @@ public class agendaDataAccess {
         String query = "INSERT INTO usuario (nome,endereco,email,celular_aux,celular,cpf,sobre) VALUES(?,?,?,?,?,?,?)";
 
         try {
-            ps = conn.getConectMySQl().prepareStatement(query);
+            preparestate = conn.getConectMySQl().prepareStatement(query);
 
-            ps.setString(1, at.getNome());
-            ps.setString(2, at.getEnd());
-            ps.setString(3, at.getEmail());
-            ps.setString(4, at.getCel_Aux());
-            ps.setString(5, at.getCel());
-            ps.setString(6, at.getCpf());
-            ps.setString(7, at.getSobre());
+            preparestate.setString(1, at.getNome());
+            preparestate.setString(2, at.getEnd());
+            preparestate.setString(3, at.getEmail());
+            preparestate.setString(4, at.getCel_Aux());
+            preparestate.setString(5, at.getCel());
+            preparestate.setString(6, at.getCpf());
+            preparestate.setString(7, at.getSobre());
 
             JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
-            ps.executeUpdate();
+            preparestate.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(agendaDataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
-            if (conn.getConectMySQl() != null && ps != null) {
+            if (conn.getConectMySQl() != null && preparestate != null) {
                 try {
                     conn.getConectMySQl().close();
-                    ps.close();
+                    preparestate.close();
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
@@ -61,26 +61,26 @@ public class agendaDataAccess {
         String query = " UPDATE usuario SET nome = ?, endereco = ?, email = ?, celular_aux = ?, celular = ?, cpf = ?, sobre = ?"
                 + " WHERE id = ?";
         try {
-            ps = conn.getConectMySQl().prepareStatement(query);
-            ps.setString(1, at.getNome());
-            ps.setString(2, at.getEnd());
-            ps.setString(3, at.getEmail());
-            ps.setString(4, at.getCel_Aux());
-            ps.setString(5, at.getCel());
-            ps.setString(6, at.getCpf());
-            ps.setString(7, at.getSobre());
-            ps.setInt(8, at.getId());
+            preparestate = conn.getConectMySQl().prepareStatement(query);
+            preparestate.setString(1, at.getNome());
+            preparestate.setString(2, at.getEnd());
+            preparestate.setString(3, at.getEmail());
+            preparestate.setString(4, at.getCel_Aux());
+            preparestate.setString(5, at.getCel());
+            preparestate.setString(6, at.getCpf());
+            preparestate.setString(7, at.getSobre());
+            preparestate.setInt(8, at.getId());
 
-            ps.executeUpdate();
+            preparestate.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Contato Atualizado!!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Opá! Erro ao atualizar " + ex.getSQLState() + ex.getErrorCode());
         } finally {
-            if (conn.getConectMySQl() != null && ps != null) {
+            if (conn.getConectMySQl() != null && preparestate != null) {
                 try {
                     conn.getConectMySQl().close();
-                    ps.close();
+                    preparestate.close();
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
@@ -93,18 +93,18 @@ public class agendaDataAccess {
         String sql = "DELETE FROM usuario WHERE id = ?";
 
         try {
-            ps = conn.getConectMySQl().prepareStatement(sql);
-            ps.setInt(1, id);
-            if (ps.executeUpdate() != 0) {
+            preparestate = conn.getConectMySQl().prepareStatement(sql);
+            preparestate.setInt(1, id);
+            if (preparestate.executeUpdate() != 0) {
                 JOptionPane.showMessageDialog(null, "Contato deletado com sucesso!");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         } finally {
-            if (conn.getConectMySQl() != null && ps != null) {
+            if (conn.getConectMySQl() != null && preparestate != null) {
                 try {
                     conn.getConectMySQl().close();
-                    ps.close();
+                    preparestate.close();
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
@@ -143,10 +143,10 @@ public class agendaDataAccess {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         } finally {
-            if (conn.getConectMySQl() != null && ps != null) {
+            if (conn.getConectMySQl() != null && preparestate != null) {
                 try {
                     conn.getConectMySQl().close();
-                    ps.close();
+                    preparestate.close();
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
@@ -161,8 +161,8 @@ public class agendaDataAccess {
         //Classe que vai recuperar os dados do banco de dados
         ResultSet rset = null;
         try {
-            ps = conn.getConectMySQl().prepareStatement(sql);
-            rset = ps.executeQuery();
+            preparestate = conn.getConectMySQl().prepareStatement(sql);
+            rset = preparestate.executeQuery();
             //Enquanto existir dados no banco de dados, faça
             while (rset.next()) {
                 //Recupera o id do banco e atribui ele ao objeto
@@ -191,14 +191,13 @@ public class agendaDataAccess {
                 if (rset != null) {
                     rset.close();
                 }
-                if (ps != null) {
-                    ps.close();
+                if (preparestate != null) {
+                    preparestate.close();
                 }
                 if (conn != null) {
                     conn.getConectMySQl().close();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
             }
         }
         return lista;
