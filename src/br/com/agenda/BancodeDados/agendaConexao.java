@@ -10,13 +10,20 @@ public class agendaConexao {
 
     private Connection conn;
     /**
-     * Conexão como MySQL
+     * Conexão com o MySQL
     */
-    private final String url = "jdbc:mysql://localhost:3306/cad?useTimezone=true&serverTimezone=UTC";
-    private final String user = "root";
-    private final String pass = "asdf";
-    private static final String Driverclass = "com.mysql.cj.jdbc.Driver";
+    private final String urlMySQL = "jdbc:mysql://localhost:3306/cad?useTimezone=true&serverTimezone=UTC";
+    private final String userMySQL = "root";
+    private final String passMySQL = "asdf";
+    private static final String DriverclassMySQL = "com.mysql.cj.jdbc.Driver";
     
+    /**
+     * Conexão com o Postgres
+    */
+    private final String urlPostgres = "jdbc:postgres://localhost:5432/cad?useTimezone=true&serverTimezone=UTC";
+    private final String userPostgres = "root";
+    private final String passPostgres = "asdf";
+    private static final String DriverclassPostgres = "org.postgresql.Driver";
     // Método construtor
     public agendaConexao(){
     }
@@ -24,8 +31,19 @@ public class agendaConexao {
     public Connection getConectMySQl() {
 
         try {
-            Class.forName(Driverclass);
-            conn = DriverManager.getConnection(url, user, pass);
+            Class.forName(DriverclassMySQL);
+            conn = DriverManager.getConnection(urlMySQL, userMySQL, passMySQL);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(agendaConexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conn;
+    }
+    
+     public Connection getConectPostgres() {
+
+        try {
+            Class.forName(DriverclassPostgres);
+            conn = DriverManager.getConnection(urlPostgres, userPostgres, passPostgres);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(agendaConexao.class.getName()).log(Level.SEVERE, null, ex);
         }
