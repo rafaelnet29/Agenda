@@ -137,9 +137,6 @@ public class agendaDataAccess {
                 stmt.close();
                 JOptionPane.showMessageDialog(null, " Agenda apagada! ");
             }
-            if (r != 0) {
-                JOptionPane.showMessageDialog(null, " Problemas na hora de execultar esta ação ", "", JOptionPane.WARNING_MESSAGE);
-            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         } finally {

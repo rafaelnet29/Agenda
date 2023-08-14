@@ -3,7 +3,6 @@ package br.com.agenda.Frames;
 import br.com.agenda.BancodeDados.agendaDataAccess;
 import br.com.agenda.BancodeDados.agendaConexao;
 import br.com.agenda.Modelo.agendaModel;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public final class agendaTelaCadastro extends javax.swing.JFrame {
 
-    PreparedStatement ps;
+    //PreparedStatement ps;
     agendaConexao conn;
     agendaDataAccess bNegocio;
     agendaModel atributos;
@@ -36,7 +35,15 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         this.jTASobre.setText("");
         this.jFTCel_Aux.setText("");
     }
-
+    
+    /***
+     * @param pesquisa
+     * Esse método seta os valores da pesquisa no TextField
+     * O parâmentro do tipo String recebe do TextField (Pesquisa),
+     * que por sua vez, serve como parâmetro para o método 
+     * getContatos.Realizando um forEach e preenchendo os valores
+     * nos métodos setText de cada campo
+    */
     public void PesquisaNome(String pesquisa) {
         pesquisa = jTFPesquisar.getText();
         for (agendaModel a : bNegocio.getContatos(pesquisa)) {
