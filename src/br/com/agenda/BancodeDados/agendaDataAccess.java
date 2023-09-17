@@ -120,17 +120,17 @@ public class agendaDataAccess {
             String sql = "drop table if exists usuario;";
             String sql2 = "create table if not exists usuario("
                     + "\n id int not null auto_increment,"
-                    + "\n nome varchar(250) not null,"
+                    + "\n nome varchar(50) not null,"
                     + "\n endereco varchar(200) not null,"
-                    + "\n email varchar(200)not null,"
-                    + "\n celular_aux varchar(30) not null,"
+                    + "\n email varchar(100)not null,"
+                    + "\n celular_aux varchar(30),"
                     + "\n celular varchar(30) not null,"
                     + "\n cpf varchar(20)not null,"
                     + "\n sobre varchar(255),"
                     + "\n constraint usuario_id_pk primary key(id),"
                     + "\n constraint usuario_cpf_uk unique (cpf)\n);";
             int r = JOptionPane.showConfirmDialog(null,
-                    " Essa ação apagará toda a Agenda. Quer continuar ? ", " ", JOptionPane.YES_NO_CANCEL_OPTION);
+                    " Essa ação apagará toda a Agenda. Quer continuar ? ", " ATENÇÂO!!! ", JOptionPane.YES_NO_CANCEL_OPTION);
             if (r == 0) {
                 stmt.executeUpdate(sql);
                 stmt.executeUpdate(sql2);
