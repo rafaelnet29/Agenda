@@ -21,8 +21,8 @@ public class agendaConexao {
      * Conexão com o Postgres
     */
     private final String urlPostgres = "jdbc:postgres://localhost:5432/cad?useTimezone=true&serverTimezone=UTC";
-    private final String userPostgres = "root";
-    private final String passPostgres = "asdf";
+    private final String userPostgres = "postgres";
+    private final String passPostgres = "postgres";
     private static final String DriverclassPostgres = "org.postgresql.Driver";
     // Método construtor
     public agendaConexao(){

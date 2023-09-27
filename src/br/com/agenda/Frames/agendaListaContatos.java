@@ -11,42 +11,42 @@ import javax.swing.JOptionPane;
 
 public final class agendaListaContatos extends javax.swing.JFrame {
 
-    agendaConexao c;
+    agendaConexao agendaConn;
+
     public agendaListaContatos() {
         initComponents();
-        c = new agendaConexao();
+        agendaConn = new agendaConexao();
         jTAListaContatos.setEditable(false);
         jTAListaContatos.setLineWrap(true);
         this.setLocationRelativeTo(null);
-        
+
     }
-    
-   public void Relatorios() {
+
+    public void Relatorios() {
         String sql = "SELECT * FROM usuario ORDER BY id, nome DESC";
         try {
-            if (this.c.getConectMySQl() != null) {
-                Statement smt = this.c.getConectMySQl().createStatement();
+            if (this.agendaConn.getConectMySQl() != null) {
+                Statement smt = this.agendaConn.getConectMySQl().createStatement();
                 ResultSet rs = smt.executeQuery(sql);
                 while (rs.next()) {
                     this.jTAListaContatos.append(" Id: " + rs.getInt("id") + " "
-                            + "\n Nome: " + rs.getString("nome").toUpperCase() 
-                            + "\n Endereco: " + rs.getString("endereco").toUpperCase() 
+                            + "\n Nome: " + rs.getString("nome").toUpperCase()
+                            + "\n Endereco: " + rs.getString("endereco").toUpperCase()
                             + "\n E-mail: " + rs.getString("email").toUpperCase()
                             + "\n Celular auxiliar: " + rs.getString("celular_aux")
                             + "\n Celular: " + rs.getString("celular")
-                            + "\n Cpf: " + rs.getString("cpf") 
+                            + "\n Cpf: " + rs.getString("cpf")
                             + "\n Sobre: \n" + rs.getString("sobre").toUpperCase()
                             + "\n____________________________________________________\n");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, " Problemas na comunicão com o Banco de dados ");
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(agendaListaContatos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -133,7 +133,7 @@ public final class agendaListaContatos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new ListaContatos().setVisible(true);
+                // new ListaContatos().setVisible(true);
             }
         });
     }
