@@ -113,7 +113,7 @@ public class agendaDataAccess {
 
     }
 
-//Método para recriar a tablela contatos via SQL
+    //Método para recriar a tablela contatos via SQL
     public void ApagarAgenda() {
         try {
             Statement stmt = this.conn.getConectMySQl().createStatement();
