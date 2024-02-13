@@ -45,16 +45,15 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
      * nos métodos setText de cada campo
     */
     public void PesquisaNome(String pesquisa) {
-        pesquisa = jTFPesquisar.getText();
-        for (agendaModel a : bNegocio.getContatos(pesquisa)) {
-            jTFIdentificacao.setText(Integer.toString(a.getId()));
-            jTFNome.setText(a.getNome());
-            jTFEndereco.setText(a.getEnd());
-            jTFEmail.setText(a.getEmail());
-            jFTCel_Aux.setText(a.getCel_Aux());
-            jFTCel.setText(a.getCel());
-            jFTCpf.setText(a.getCpf());
-            jTASobre.setText(a.getSobre());
+        for (agendaModel model : bNegocio.getContatos(pesquisa)) {
+            jTFIdentificacao.setText(Integer.toString(model.getId()));
+            jTFNome.setText(model.getNome());
+            jTFEndereco.setText(model.getEnd());
+            jTFEmail.setText(model.getEmail());
+            jFTCel_Aux.setText(model.getCel_Aux());
+            jFTCel.setText(model.getCel());
+            jFTCpf.setText(model.getCpf());
+            jTASobre.setText(model.getSobre());
         }
     }
 

@@ -14,14 +14,14 @@ import javax.swing.JOptionPane;
 public class agendaDataAccess {
 
     private final agendaConexao conn;
-    private PreparedStatement preparestate;
-    private final agendaModel at;
+    private PreparedStatement preparestate = null;
+    private final agendaModel atributos;
 
     //Método Construtor
     public agendaDataAccess() {
         this.preparestate = preparestate;
         this.conn = new agendaConexao();
-        this.at = new agendaModel();
+        this.atributos = new agendaModel();
     }
 
     //Método para inserir contatos via SQL
@@ -31,13 +31,13 @@ public class agendaDataAccess {
         try {
             preparestate = conn.getConectMySQl().prepareStatement(query);
 
-            preparestate.setString(1, at.getNome());
-            preparestate.setString(2, at.getEnd());
-            preparestate.setString(3, at.getEmail());
-            preparestate.setString(4, at.getCel_Aux());
-            preparestate.setString(5, at.getCel());
-            preparestate.setString(6, at.getCpf());
-            preparestate.setString(7, at.getSobre());
+            preparestate.setString(1, atributos.getNome());
+            preparestate.setString(2, atributos.getEnd());
+            preparestate.setString(3, atributos.getEmail());
+            preparestate.setString(4, atributos.getCel_Aux());
+            preparestate.setString(5, atributos.getCel());
+            preparestate.setString(6, atributos.getCpf());
+            preparestate.setString(7, atributos.getSobre());
 
             JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
             preparestate.executeUpdate();
@@ -163,23 +163,23 @@ public class agendaDataAccess {
             //Enquanto existir dados no banco de dados, faça
             while (rset.next()) {
                 //Recupera o id do banco e atribui ele ao objeto
-                at.setId(rset.getInt("id"));
+                atributos.setId(rset.getInt("id"));
                 //Recupera o nome do banco e atribui ele ao objeto
-                at.setNome(rset.getString("nome"));
+                atributos.setNome(rset.getString("nome"));
                 //Recupera a endereco do banco e atribui ele ao objeto
-                at.setEnd(rset.getString("endereco"));
+                atributos.setEnd(rset.getString("endereco"));
                 //Recupera o email do banco e atribui ela ao objeto
-                at.setEmail(rset.getString("email"));
+                atributos.setEmail(rset.getString("email"));
                 //Recupera o telefone auxiliar
-                at.setCel_Aux(rset.getString("celular_aux"));
+                atributos.setCel_Aux(rset.getString("celular_aux"));
                 //Recupera o telefone celular
-                at.setCel(rset.getString("celular"));
+                atributos.setCel(rset.getString("celular"));
                 //Recupera o cpf
-                at.setCpf(rset.getString("cpf"));
+                atributos.setCpf(rset.getString("cpf"));
                 //Recupera a descrição do usuario
-                at.setSobre(rset.getString("sobre"));
+                atributos.setSobre(rset.getString("sobre"));
                 //Adiciono o contato recuperado, a lista de contatos
-                lista.add(at);
+                lista.add(atributos);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage() + " " + JOptionPane.INFORMATION_MESSAGE);
