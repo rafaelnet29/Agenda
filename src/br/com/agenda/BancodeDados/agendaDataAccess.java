@@ -14,12 +14,11 @@ import javax.swing.JOptionPane;
 public class agendaDataAccess {
 
     private final agendaConexao conn;
-    private PreparedStatement preparestate = null;
+    private PreparedStatement preparestate;
     private final agendaModel atributos;
 
     //Método Construtor
     public agendaDataAccess() {
-        this.preparestate = preparestate;
         this.conn = new agendaConexao();
         this.atributos = new agendaModel();
     }
@@ -31,20 +30,20 @@ public class agendaDataAccess {
         try {
             preparestate = conn.getConectMySQl().prepareStatement(query);
 
-            preparestate.setString(1, atributos.getNome());
-            preparestate.setString(2, atributos.getEnd());
-            preparestate.setString(3, atributos.getEmail());
-            preparestate.setString(4, atributos.getCel_Aux());
-            preparestate.setString(5, atributos.getCel());
-            preparestate.setString(6, atributos.getCpf());
-            preparestate.setString(7, atributos.getSobre());
+            preparestate.setString(1, at.getNome());
+            preparestate.setString(2, at.getEnd());
+            preparestate.setString(3, at.getEmail());
+            preparestate.setString(4, at.getCel_Aux());
+            preparestate.setString(5, at.getCel());
+            preparestate.setString(6, at.getCpf());
+            preparestate.setString(7, at.getSobre());
 
-            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso", "Cadastro", 1);
             preparestate.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(agendaDataAccess.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
+        } finally {
             if (conn.getConectMySQl() != null && preparestate != null) {
                 try {
                     conn.getConectMySQl().close();
