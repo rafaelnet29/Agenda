@@ -23,7 +23,7 @@ public final class agendaListaContatos extends javax.swing.JFrame {
     }
 
     public void Relatorios() {
-        String sql = "SELECT * FROM usuario ORDER BY id, nome DESC";
+        String sql = "SELECT * FROM usuario ORDER BY nome, nome ASC";
         try {
             if (this.agendaConn.getConectMySQl() != null) {
                 Statement smt = this.agendaConn.getConectMySQl().createStatement();

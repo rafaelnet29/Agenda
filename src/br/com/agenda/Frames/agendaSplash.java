@@ -10,6 +10,7 @@ public final class agendaSplash extends javax.swing.JFrame {
     public agendaSplash() {
         initComponents();
         Carregar();
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
     
@@ -24,7 +25,7 @@ public final class agendaSplash extends javax.swing.JFrame {
                 try {
                     if (conn.getConectMySQl() != null) {
                         for (int i = 0; i < 101; ++i) {
-                            sleep(100);
+                            sleep(20);
                             jPBar.setValue(i);
                             if (jPBar.getValue() <= 25) {
                                 jLbStatus.setText(" Carregando Interface... ");
@@ -137,7 +138,7 @@ public final class agendaSplash extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new Splash().setVisible(true);
+               
             }
         });
     }
