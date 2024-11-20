@@ -116,8 +116,8 @@ public class agendaDataAccess {
     public void ApagarAgenda() {
         try {
             Statement stmt = this.conn.getConectMySQl().createStatement();
-            String sql = "drop table if exists usuario;";
-            String sql2 = "create table if not exists usuario("
+            String sql = "DROP TABLE IF EXISTS usuario;";
+            String sql2 = "CREATE TABLE IF NOT EXISTS usuario("
                     + "\n id int not null auto_increment,"
                     + "\n nome varchar(50) not null,"
                     + "\n endereco varchar(200) not null,"
