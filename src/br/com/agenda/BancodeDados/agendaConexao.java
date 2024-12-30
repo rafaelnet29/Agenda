@@ -12,7 +12,7 @@ public class agendaConexao {
     /**
      * Conexão com o MySQL
     */
-    private final String urlMySQL = "jdbc:mysql://localhost:3306/cad?useTimezone=true&serverTimezone=UTC";
+    private final String urlMySQL = "jdbc:mysql://localhost:3306/cad";
     private final String userMySQL = "root";
     private final String passMySQL = "qwerty";
     private static final String DriverclassMySQL = "com.mysql.cj.jdbc.Driver";
