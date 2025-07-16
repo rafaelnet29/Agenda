@@ -11,21 +11,22 @@ public class agendaConexao {
     private Connection conn;
     /**
      * Conexão com o MySQL
-    */
+     */
     private final String urlMySQL = "jdbc:mysql://localhost:3306/cad";
     private final String userMySQL = "root";
     private final String passMySQL = "qwerty";
     private static final String DriverclassMySQL = "com.mysql.cj.jdbc.Driver";
-    
+
     /**
      * Conexão com o Postgres
-    */
+     */
     private final String urlPostgres = "jdbc:postgresql://localhost:5432/cad";
     private final String userPostgres = "postgres";
     private final String passPostgres = "qwerty";
     private static final String DriverclassPostgres = "org.postgresql.Driver";
+
     // Método construtor
-    public agendaConexao(){
+    public agendaConexao() {
     }
 
     public Connection getConectMySQl() {
@@ -38,8 +39,8 @@ public class agendaConexao {
         }
         return conn;
     }
-    
-     public Connection getConectPostgres() {
+
+    public Connection getConectPostgres() {
 
         try {
             Class.forName(DriverclassPostgres);
