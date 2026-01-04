@@ -25,15 +25,15 @@ public final class agendaListaContatos extends javax.swing.JFrame {
     public void Relatorios() {
         String sql = "SELECT * FROM usuario ORDER BY nome ASC";
         try {
-            if (this.agendaConn.getConectMySQl() != null) {
-                Statement smt = this.agendaConn.getConectMySQl().createStatement();
+            if (this.agendaConn.getConnection()!= null) {
+                Statement smt = this.agendaConn.getConnection().createStatement();
                 ResultSet rs = smt.executeQuery(sql);
                 while (rs.next()) {
                     this.jTAListaContatos.append(" Id: " + rs.getInt("id") + " "
                             + "\n Nome: " + rs.getString("nome").toUpperCase()
                             + "\n Endereco: " + rs.getString("endereco").toUpperCase()
                             + "\n E-mail: " + rs.getString("email").toUpperCase()
-                            + "\n Celular auxiliar: " + rs.getString("celular_aux")
+                            + "\n Celular auxiliar: " + rs.getString("cel_aux")
                             + "\n Celular: " + rs.getString("celular")
                             + "\n Cpf: " + rs.getString("cpf")
                             + "\n Sobre: \n" + rs.getString("sobre").toUpperCase()

@@ -35,15 +35,14 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         this.jTASobre.setText("");
         this.jFTCel_Aux.setText("");
     }
-    
-    /***
-     * @param pesquisa
-     * Esse método seta os valores da pesquisa no TextField
-     * O parâmentro do tipo String recebe do TextField (Pesquisa),
-     * que por sua vez, serve como parâmetro para o método 
-     * getContatos.Realizando um forEach e preenchendo os valores
-     * nos métodos setText de cada campo
-    */
+
+    /**
+     * *
+     * @param pesquisa Esse método seta os valores da pesquisa no TextField O
+     * parâmentro do tipo String recebe do TextField (Pesquisa), que por sua
+     * vez, serve como parâmetro para o método getContatos.Realizando um forEach
+     * e preenchendo os valores nos métodos setText de cada campo
+     */
     public void PesquisaNome(String pesquisa) {
         for (agendaModel model : bNegocio.getContatos(pesquisa)) {
             jTFIdentificacao.setText(Integer.toString(model.getId()));
@@ -61,7 +60,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         int resposta = JOptionPane.showConfirmDialog(null, " Você quer realmente sair? ", " ATENÇÃO! ", 1);
         if (resposta == 0) {
             try {
-                this.conn.getConectMySQl().close();
+                this.conn.getConnection().close();
                 this.dispose();
             } catch (SQLException ex) {
                 Logger.getLogger(br.com.agenda.Frames.agendaTelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
@@ -412,7 +411,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         atributos.setEmail(jTFEmail.getText());
         atributos.setCel_Aux(jFTCel_Aux.getText());
         atributos.setCel(jFTCel.getText());
-        atributos.setCpf(jFTCpf.getText());        
+        atributos.setCpf(jFTCpf.getText());
         atributos.setSobre(jTASobre.getText());
         bNegocio.inserir(atributos);
         Limpar();
@@ -425,16 +424,16 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
         atributos.setEmail(jTFEmail.getText());
         atributos.setCel_Aux(jFTCel_Aux.getText());
         atributos.setCel(jFTCel.getText());
-        atributos.setCpf(jFTCpf.getText());        
+        atributos.setCpf(jFTCpf.getText());
         atributos.setSobre(jTASobre.getText());
         atributos.setId(id);
-        bNegocio.Atualizar(atributos);
+        bNegocio.atualizar(atributos);
         Limpar();
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-          bNegocio.Deletar(Integer.parseInt(jTFIdentificacao.getText()));
-          Limpar();
+        bNegocio.deletar(Integer.parseInt(jTFIdentificacao.getText()));
+        Limpar();
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
@@ -483,7 +482,7 @@ public final class agendaTelaCadastro extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-           /* Create and display the form */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new agendaTelaCadastro().setVisible(true);

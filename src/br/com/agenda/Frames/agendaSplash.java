@@ -23,7 +23,7 @@ public final class agendaSplash extends javax.swing.JFrame {
             public void run() {
                 agendaConexao conn = new agendaConexao();
                 try {
-                    if (conn.getConectMySQl() != null) {
+                    if (conn.getConnection()!= null) {
                         for (int i = 0; i < 101; ++i) {
                             sleep(20);
                             jPBar.setValue(i);

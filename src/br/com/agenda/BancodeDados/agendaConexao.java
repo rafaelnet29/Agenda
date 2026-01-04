@@ -3,8 +3,7 @@ package br.com.agenda.BancodeDados;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class agendaConexao {
 
@@ -22,31 +21,28 @@ public class agendaConexao {
      */
     private final String urlPostgres = "jdbc:postgresql://localhost:5432/cad";
     private final String userPostgres = "postgres";
-    private final String passPostgres = "qwerty";
+    private final String passPostgres = "postgres";
     private static final String DriverclassPostgres = "org.postgresql.Driver";
 
     // Método construtor
     public agendaConexao() {
     }
 
-    public Connection getConectMySQl() {
-
+    public Connection getConnection() {
+        Connection conn = null;
         try {
             Class.forName(DriverclassMySQL);
             conn = DriverManager.getConnection(urlMySQL, userMySQL, passMySQL);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(agendaConexao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return conn;
-    }
-
-    public Connection getConectPostgres() {
-
-        try {
-            Class.forName(DriverclassPostgres);
-            conn = DriverManager.getConnection(urlPostgres, userPostgres, passPostgres);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(agendaConexao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Conectado ao MySQL!");
+        } catch (ClassNotFoundException | SQLException exMySQL) {
+            System.out.println("Falha no MySQL, tentando Postgres...");
+            try {
+                Class.forName(DriverclassPostgres);
+                conn = DriverManager.getConnection(urlPostgres, userPostgres, passPostgres);
+                System.out.println("Conectado ao Postgres!");
+            } catch (ClassNotFoundException | SQLException exPostgres) {
+                System.out.println("Falha no Postgres");
+            }
         }
         return conn;
     }
